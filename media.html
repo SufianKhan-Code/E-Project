@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Mountaineering - Media</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Mountaineering, Stories, Gallery, News, Media, Videos, Photos, Achievements" name="keywords">
+    <meta content="Success stories, photo gallery, and latest news from the world of mountaineering."
+        name="description">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Open+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        /* Media Page Specific Styles */
+        .media-nav {
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .media-section {
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(7, 60, 69, 0.1);
+        }
+
+        .media-section:last-child {
+            border-bottom: none;
+        }
+
+        /* Stories Section */
+        .story-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(7, 60, 69, 0.1);
+            border-left: 4px solid rgb(7, 60, 69);
+            height: 100%;
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(7, 60, 69, 0.15);
+            border-left-color: #1d8585;
+        }
+
+        .story-quote {
+            border-left: 3px solid rgb(7, 60, 69);
+            padding-left: 15px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #666;
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            background: rgb(7, 60, 69);
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            height: 300px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(7, 60, 69, 0.9);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            background: rgba(7, 60, 69, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        /* News Section */
+        .news-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(7, 60, 69, 0.1);
+            height: 100%;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(7, 60, 69, 0.1);
+        }
+
+        .news-date {
+            display: inline-block;
+            padding: 3px 10px;
+            background: rgba(7, 60, 69, 0.1);
+            color: rgb(7, 60, 69);
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .news-category {
+            display: inline-block;
+            padding: 3px 10px;
+            background: rgb(7, 60, 69);
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .news-category.technology {
+            background: #2196F3;
+        }
+
+        .news-category.expedition {
+            background: #4CAF50;
+        }
+
+        .news-category.safety {
+            background: #FF9800;
+        }
+
+        .news-category.environment {
+            background: #9C27B0;
+        }
+
+        /* Lightbox Modal */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .lightbox-caption {
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* Sorting Controls */
+        .sort-controls {
+            background: rgba(7, 60, 69, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .sort-btn {
+            margin-right: 10px;
+            margin-bottom: 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .gallery-item {
+                height: 250px;
+            }
+
+            .media-nav {
+                top: 60px;
+            }
+        }
+
+        #nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 70px;
+            background-color: rgba(255, 255, 255, 0.95);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        /* 1. EXTRA SMALL DEVICES (Phones, less than 576px) */
+        @media (max-width: 575.98px) {
+
+            /* Navigation */
+            #nav {
+                height: 60px;
+                padding: 0 10px;
+            }
+
+            .navbar-brand h1 {
+                font-size: 1.5rem;
+            }
+
+            .navbar-nav {
+                text-align: center;
+            }
+
+            .border-start.ps-4.d-none.d-lg-block {
+                display: none !important;
+            }
+
+            /* Carousel */
+            .carousel-caption .container .row {
+                justify-content: center !important;
+            }
+
+            .carousel-caption .col-lg-8 {
+                padding: 0 15px;
+                text-align: center !important;
+            }
+
+            .display-1 {
+                font-size: 2.5rem !important;
+                line-height: 1.2;
+            }
+
+            .carousel-caption p.fs-4 {
+                font-size: 1rem !important;
+            }
+
+            .btn-secondary {
+                padding: 0.5rem 1.5rem !important;
+                font-size: 0.9rem;
+            }
+
+            /* Introduction Section */
+            .container-xxl.py-5 .row {
+                flex-direction: column;
+            }
+
+            .container-xxl.py-5 .col-lg-6 {
+                width: 100%;
+                margin-bottom: 2rem;
+            }
+
+            .container-xxl.py-5 h2.display-5 {
+                font-size: 1.8rem;
+                text-align: center;
+            }
+
+            /* Image Gallery Section */
+            .container-xxl.py-5.bg-light .row.g-4 {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .col-lg-3.col-md-6 {
+                width: 90%;
+                margin-bottom: 1.5rem;
+            }
+
+            .team-item.rounded.p-3 {
+                padding: 1rem !important;
+            }
+
+            /* Footer */
+            .footer .row.g-5 {
+                flex-direction: column;
+            }
+
+            .footer .col-lg-3.col-md-6 {
+                width: 100%;
+                margin-bottom: 2rem;
+                text-align: center;
+            }
+
+            .footer .d-flex.pt-3 {
+                justify-content: center;
+            }
+
+            .copyright .row {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .copyright .col-md-6 {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+
+            /* General Spacing Adjustments */
+            .container-xxl.py-5 {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+
+            .container.py-5 {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+
+            .mt-5 {
+                margin-top: 2rem !important;
+            }
+
+            /* Back to top button */
+            .back-to-top {
+                width: 40px !important;
+                height: 40px !important;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .back-to-top i {
+                font-size: 1rem;
+            }
+        }
+
+        /* 2. SMALL DEVICES (Tablets, 576px to 767.98px) */
+        @media (min-width: 576px) and (max-width: 767.98px) {
+
+            /* Navigation */
+            .navbar-brand h1 {
+                font-size: 1.75rem;
+            }
+
+            .navbar-nav {
+                text-align: center;
+            }
+
+            /* Carousel */
+            .display-1 {
+                font-size: 3rem !important;
+                line-height: 1.2;
+            }
+
+            .carousel-caption p.fs-4 {
+                font-size: 1.2rem !important;
+            }
+
+            .carousel-caption .col-lg-8 {
+                padding: 0 20px;
+            }
+
+            /* Introduction Section */
+            .container-xxl.py-5 .row {
+                flex-direction: column;
+            }
+
+            .container-xxl.py-5 .col-lg-6 {
+                width: 100%;
+            }
+
+            .container-xxl.py-5 .col-lg-6:first-child {
+                margin-bottom: 3rem;
+            }
+
+            .container-xxl.py-5 h2.display-5 {
+                font-size: 2.2rem;
+            }
+
+            /* Image Gallery Section */
+            .container-xxl.py-5.bg-light .row.g-4 {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .col-lg-3.col-md-6 {
+                width: 100%;
+            }
+
+            /* Footer */
+            .footer .row.g-5 {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .footer .col-lg-3.col-md-6 {
+                width: 100%;
+            }
+
+            .footer .col-lg-3.col-md-6:last-child {
+                grid-column: span 2;
+            }
+
+            /* Copyright */
+            .copyright .row {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            /* General Adjustments */
+            .container-xxl.py-5 {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+        }
+
+        /* 3. MEDIUM DEVICES (Small Laptops, 768px to 991.98px) */
+        @media (min-width: 768px) and (max-width: 991.98px) {
+
+            /* Navigation */
+            .navbar-brand h1 {
+                font-size: 1.8rem;
+            }
+
+            .navbar-nav .nav-item {
+                margin: 0 0.2rem;
+            }
+
+            .navbar-nav .nav-link {
+                font-size: 0.9rem;
+                padding: 0.5rem 0.3rem !important;
+            }
+
+            /* Carousel */
+            .display-1 {
+                font-size: 3.5rem !important;
+            }
+
+            .carousel-caption p.fs-4 {
+                font-size: 1.3rem !important;
+            }
+
+            /* Introduction Section */
+            .container-xxl.py-5 .row {
+                align-items: flex-start;
+            }
+
+            .container-xxl.py-5 h2.display-5 {
+                font-size: 2.5rem;
+            }
+
+            .container-xxl.py-5 p {
+                font-size: 1rem;
+            }
+
+            /* Image Gallery Section */
+            .container-xxl.py-5.bg-light .row.g-4 {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            /* Footer */
+            .footer .row.g-5 {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+
+            .footer .col-lg-3.col-md-6 {
+                width: 100%;
+            }
+
+            /* Newsletter Form */
+            .position-relative.w-100 input {
+                font-size: 0.9rem;
+                padding: 0.75rem 1rem !important;
+            }
+
+            .position-relative.w-100 button {
+                padding: 0.5rem 1rem !important;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* 4. LARGE DEVICES (Desktops, 992px and above) - Default styles apply */
+        /* The existing styles in the <style> tag will serve as the large screen styles */
+
+        /* Additional responsive adjustments for ALL screen sizes */
+        @media (max-width: 991.98px) {
+
+            /* Make sure dropdowns work on touch devices */
+            .dropdown-menu {
+                border: none;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            /* Ensure carousel images are responsive */
+            .carousel-item img {
+                height: 500px;
+                object-fit: cover;
+            }
+
+            /* Adjust container padding */
+            .container,
+            .container-fluid {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            /* Fix any overflow issues */
+            body {
+                overflow-x: hidden;
+            }
+
+            /* Adjust button sizes for better touch targets */
+            .btn {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Ensure images are responsive */
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+        /* Fix for mobile navigation toggle */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background-color: rgba(255, 255, 255, 0.98);
+                padding: 1rem;
+                border-radius: 0 0 10px 10px;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                margin-top: 10px;
+            }
+
+            .navbar-toggler {
+                border: none;
+                padding: 0.5rem;
+            }
+
+            .navbar-toggler:focus {
+                box-shadow: none;
+            }
+        }
+
+        /* Ensure proper spacing on very small screens */
+        @media (max-width: 400px) {
+            .carousel-caption {
+                padding-bottom: 1rem;
+            }
+
+            .display-1 {
+                font-size: 2rem !important;
+            }
+
+            .btn-secondary.rounded-pill {
+                border-radius: 50px !important;
+                padding: 0.4rem 1rem !important;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Improve readability on all devices */
+        @media (max-width: 1200px) {
+            body {
+                font-size: 16px;
+                line-height: 1.6;
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                line-height: 1.3;
+            }
+        }
+
+        /* Make sure the back to top button is visible but not obstructive */
+        @media (max-width: 768px) {
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                bottom: 15px;
+                right: 15px;
+                opacity: 0.9;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Spinner -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    </div>
+
+    <!-- Nav  -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5" id="nav">
+        <a href="index.html" class="navbar-brand d-flex align-items-center">
+            <h1 class="" style="color: rgb(7, 60, 69);">Mountaineering</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index.html" class="nav-item nav-link active">Home</a>
+
+                <div class="nav-item dropdown">
+                    <a href="about.html" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">About</a>
+                    <div class="dropdown-menu bg-light m-0">
+                        <a href="about.html#history" class="dropdown-item">History</a>
+                        <a href="about.html#types" class="dropdown-item">Types/Styles</a>
+                        <a href="about.html#techniques" class="dropdown-item">Techniques</a>
+                        <a href="about.html#sheltering" class="dropdown-item">Sheltering</a>
+                        <a href="about.html#hazards" class="dropdown-item">Hazards</a>
+                    </div>
+                </div>
+
+                <a href="guideline.html" class="nav-item nav-link">Guidelines</a>
+
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Clubs & Records</a>
+                    <div class="dropdown-menu bg-light m-0">
+                        <a href="Club_Record.html#clubs" class="dropdown-item">Clubs</a>
+                        <a href="Club_Record.html#records" class="dropdown-item">Records</a>
+                    </div>
+                </div>
+
+                <div class="nav-item dropdown">
+                    <a href="media.html" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Media</a>
+                    <div class="dropdown-menu bg-light m-0">
+                        <a href="media.html#stories" class="dropdown-item">Success Stories</a>
+                        <a href="media.html#gallery" class="dropdown-item">Gallery</a>
+                        <a href="media.html#news" class="dropdown-item">Latest News</a>
+                    </div>
+                </div>
+
+                <a href="contact.html" class="nav-item nav-link">Contact</a>
+            </div>
+            <div class="border-start ps-4 d-none d-lg-block">
+                <button type="button" class="btn btn-sm p-0"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+    <!-- Page Header -->
+    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s" id="media">
+        <div class="container text-center py-5"><br><br><br><br>
+            <h1 class="display-3 text-white mb-4 animated slideInDown" style="color: rgb(7, 60, 69);">Media</h1>
+            <p class="text-white lead">Stories, Gallery & Latest News from the World of Mountaineering</p>
+        </div>
+    </div>
+
+    <!-- Success Stories Section -->
+    <section id="stories" class="media-section container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+                <p class="section-title bg-white text-center px-3" style="color: rgb(7, 60, 69);">Inspiring Achievements
+                </p>
+                <h1 class="mb-4">Stories of Triumph: Conquering the Summits</h1>
+                <p class="mb-5">Mountaineering sirf chadhai nahi hai, balki saahas, dosti, aur atma-vishwas ki kahani
+                    hai. Yahan kuch prerak kahaniyan di gayi hain jo safaltapoorvak aayojit (organized) camps ki misaal
+                    hain.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Story 1 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="story-card p-4 rounded">
+                        <span class="achievement-badge">First Ascent</span>
+                        <h3 class="mb-3">Summit Glory: Himalayan Explorers on Mount Kanchenjunga</h3>
+                        <p><strong>Organizer:</strong> <a href="clubs_records.html#clubs"
+                                class="text-decoration-none">Himalayan Mountaineering Institute</a></p>
+                        <p><strong>Date:</strong> May 2024 | <strong>Duration:</strong> 45-Day Expedition</p>
+
+                        <div class="story-quote">
+                            "The mountain doesn't care about your plans. You must adapt to it, not the other way
+                            around." - Expedition Leader
+                        </div>
+
+                        <p><strong>Achievement:</strong> Team ke 90% members ne bina kisi ghatna ke summit haasil kiya.
+                        </p>
+
+                        <p class="mb-3">Sankshipt Kahani: Team ne mushkil weather conditions aur technical challenges ko
+                            overcome kiya. Advanced weather forecasting aur experienced Sherpa guides ki madad se team
+                            ne safe ascent complete kiya.</p>
+
+                        <div class="text-center mt-4">
+                            <img src="img/team-1.jpeg" alt="Kanchenjunga summit team" class="img-fluid rounded"
+                                style="max-height: 200px;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 2 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="story-card p-4 rounded">
+                        <span class="achievement-badge">Rescue Mission</span>
+                        <h3 class="mb-3">Triumph Over Adversity: A Successful High-Altitude Rescue</h3>
+                        <p><strong>Organizer:</strong> <a href="clubs_records.html#clubs"
+                                class="text-decoration-none">Alpine Rescue Foundation</a></p>
+                        <p><strong>Date:</strong> November 2023 | <strong>Duration:</strong> 72-Hour Operation</p>
+
+                        <div class="story-quote">
+                            "In the mountains, we don't leave anyone behind. Every life is worth the risk." - Rescue
+                            Team Leader
+                        </div>
+
+                        <p><strong>Achievement:</strong> A successful evacuation of a climber from Camp 3 in severe
+                            weather conditions.</p>
+
+                        <p class="mb-3">Sankshipt Kahani: Focus karein team ke quick thinking aur high-altitude medical
+                            skills par. Satellite communication aur helicopter coordination ne jaan bachayi. Kismat se
+                            zyada training aur sanyojan (coordination) ne success dilayi.</p>
+
+                        <div class="text-center mt-4">
+                            <img src="img/team-2.png" alt="Rescue operation" class="img-fluid rounded"
+                                style="max-height: 200px;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 3 -->
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
+                    <div class="story-card p-4 rounded">
+                        <span class="achievement-badge">Youth Expedition</span>
+                        <h3 class="mb-3">Next Generation Summits: Youth Expedition to Mount Elbrus</h3>
+                        <p><strong>Organizer:</strong> <a href="clubs_records.html#clubs"
+                                class="text-decoration-none">American Alpine Club</a></p>
+                        <p><strong>Date:</strong> July 2024 | <strong>Duration:</strong> 30-Day Expedition</p>
+
+                        <div class="story-quote">
+                            "Teaching young climbers respect for the mountains ensures the future of our sport." -
+                            Expedition Mentor
+                        </div>
+
+                        <p><strong>Achievement:</strong> 15 young climbers (ages 18-25) successfully summited Europe's
+                            highest peak with 100% safety record.</p>
+
+                        <p class="mb-3">Sankshipt Kahani: Youth team ne intensive training camp se shuru kiya, technical
+                            skills seekhe, aur akhir mein successful summit haasil kiya. Yeh expedition ne youth
+                            mountaineering ko promote karne mein mahatvapoorn bhoomika nibhayi.</p>
+
+                        <div class="text-center mt-4">
+                            <img src="img/team-3.jpg" alt="Youth expedition team" class="img-fluid rounded"
+                                style="max-height: 200px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- More Stories -->
+            <div class="row mt-5">
+                <div class="col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="p-4 bg-light rounded">
+                        <h5><i class="fas fa-lightbulb me-2"></i> What Makes a Successful Expedition?</h5>
+                        <p class="mb-0">Successful climbs combine thorough preparation, experienced leadership,
+                            teamwork, and respect for the mountain environment. Technology helps, but human
+                            determination makes the difference.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="p-4 bg-light rounded">
+                        <h5><i class="fas fa-share-alt me-2"></i> Share Your Story</h5>
+                        <p class="mb-0">Have an inspiring mountaineering story? Contact us to share your experience and
+                            motivate the next generation of climbers.</p>
+                        <a href="contact.html" class="btn btn-sm btn-primary mt-3">Share Your Story</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="media-section container-xxl py-5 bg-light">
+        <div class="container">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+                <p class="section-title bg-white text-center px-3" style="color: rgb(7, 60, 69);">Visual Journey</p>
+                <h1 class="mb-4">The Ascent in Pictures & Motion</h1>
+                <p class="mb-5">Pahaadon ki khoobsurati, chadhai ka saahas, aur zaroori techniques ki jiaankari yahan
+                    tasveeron aur videos ke zariye dekhiye.</p>
+            </div>
+
+            <!-- Image Gallery -->
+            <div class="wow fadeInUp" data-wow-delay="0.2s">
+                <h2 class="text-center mb-4">Inspiring Photographs</h2>
+                <div class="gallery-grid">
+                    <!-- Image 1 -->
+                    <div class="gallery-item" onclick="openLightbox(0)">
+                        <img src="img/gellrey-1.jpg" alt="Teamwork climbing" loading="lazy">
+                        <div class="gallery-caption">
+                            <h6>Teamwork & Rope Skills</h6>
+                            <p class="small mb-0">Climbers roped together for safety on a glacier traverse</p>
+                        </div>
+                    </div>
+
+                    <!-- Image 2 -->
+                    <div class="gallery-item" onclick="openLightbox(1)">
+                        <img src="img/gellrey-2.png" alt="Mountaineering equipment" loading="lazy">
+                        <div class="gallery-caption">
+                            <h6>Essential Gear</h6>
+                            <p class="small mb-0">Ice axe, crampons, and harness - a climber's essential tools</p>
+                        </div>
+                    </div>
+
+                    <!-- Image 3 -->
+                    <div class="gallery-item" onclick="openLightbox(2)">
+                        <img src="img/gellrey-3.jpeg" alt="Glacier crevasse" loading="lazy">
+                        <div class="gallery-caption">
+                            <h6>Mountain Hazards</h6>
+                            <p class="small mb-0">A deep crevasse on a Himalayan glacier showing natural dangers</p>
+                        </div>
+                    </div>
+
+                    <!-- Image 4 -->
+                    <div class="gallery-item" onclick="openLightbox(3)">
+                        <img src="img/gellrey-4.jpg" alt="High altitude camp" loading="lazy">
+                        <div class="gallery-caption">
+                            <h6>High-Altitude Camping</h6>
+                            <p class="small mb-0">Expedition tents at Camp 2 on Mount Everest at 6400m</p>
+                        </div>
+                    </div>
+
+                    <!-- Image 5 -->
+                    <div class="gallery-item" onclick="openLightbox(4)">
+                        <img src="img/gellrey-5.jpg" alt="Summit celebration" loading="lazy">
+                        <div class="gallery-caption">
+                            <h6>Summit Success</h6>
+                            <p class="small mb-0">Team celebrating after reaching a 7000m peak summit</p>
+                        </div>
+                    </div>
+
+                    <!-- Image 6 -->
+                    <div class="gallery-item" onclick="openLightbox(5)">
+                        <img src="img/gellrey-6.jpg" alt="Mountain landscape" loading="lazy">
+                        <div class="gallery-caption">
+                            <h6>Alpine Sunrise</h6>
+                            <p class="small mb-0">Beautiful sunrise over the Swiss Alps during an early morning climb
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Gallery -->
+            <div class="wow fadeInUp" data-wow-delay="0.4s">
+                <h2 class="text-center mb-4">Informative Videos & Tutorials</h2>
+                <div class="row g-4">
+                    <!-- Video 1 -->
+                    <div class="col-lg-6">
+                        <div class="video-container">
+                            <iframe width="560" height="315"
+                                src="https://www.youtube.com/embed/3X8drKsdf5E?si=m-92MAuX-BqSzrTR"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h5>7 Essential Knots You Need To Know</h5>
+                            <p class="mb-2">Aside from tying shoes, a lot of people don't know, or need a refresher on
+                                tying knots.</p>
+                            <small class="text-muted"><i class="fas fa-clock me-1"></i> Duration: 07:45 | <i
+                                    class="fas fa-tag me-1"></i> Category: Techniques</small>
+                        </div>
+                    </div>
+
+                    <!-- Video 2 -->
+                    <div class="col-lg-6">
+                        <div class="video-container">
+                            <iframe width="560" height="315"
+                                src="https://www.youtube.com/embed/0EGeMffmDv4?si=mMefv3hwUMgL2Q0Y"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h5>ALTITUDE SICKNESS</h5>
+                            <p class="mb-2"></p>
+                            <small class="text-muted"><i class="fas fa-clock me-1"></i> Duration: 05:18 | <i
+                                    class="fas fa-tag me-1"></i> Category: Safety</small>
+                        </div>
+                    </div>
+
+                    <!-- Video 3 -->
+                    <div class="col-lg-6">
+                        <div class="video-container">
+                            <iframe width="560" height="315"
+                                src="https://www.youtube.com/embed/LuKAeNC8e3c?si=9b6Z6V5krqBN51Rn"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h5>Everest 2025: The Ultimate Ascent a Full Documentary video</h5>
+                            <p class="mb-2">Join a diverse team of climbers as they tackle Mount Everest's formidable
+                                challenges in the 2025 climbing season.</p>
+                            <small class="text-muted"><i class="fas fa-clock me-1"></i> Duration: 40:31 | <i
+                                    class="fas fa-tag me-1"></i> Category: Expedition</small>
+                        </div>
+                    </div>
+
+                    <!-- Video 4 -->
+                    <div class="col-lg-6">
+                        <div class="video-container">
+                            <iframe width="560" height="315"
+                                src="https://www.youtube.com/embed/zb3gaW8Lz0s?si=2HFnta05iKLUHv_2"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h5>Basic Avalanche Rescue Technique</h5>
+                            <p class="mb-2">Practice makes perfect. In Episode 9 of our How-To Series, Greg Hill and
+                                Chris Rubens discuss basic avalanche scenarios and rescue techniques.
+                            </p>
+                            <small class="text-muted"><i class="fas fa-clock me-1"></i> Duration: 11:01 | <i
+                                    class="fas fa-tag me-1"></i> Category: Safety</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest News Section -->
+    <section id="news" class="media-section container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
+                <p class="section-title bg-white text-center px-3" style="color: rgb(7, 60, 69);">Current Updates</p>
+                <h1 class="mb-4">Latest Developments in the World of Mountaineering</h1>
+                <p class="mb-5">Mountaineering ki duniya tezi se badal rahi hai, khaaskar technology aur safety ke
+                    mnamle mein. Yahan is field ki sabse nayee khabrein aur vikas (developments) diye gaye hain.</p>
+            </div>
+
+            <!-- Sorting Controls -->
+            <div class="sort-controls wow fadeInUp" data-wow-delay="0.2s">
+                <h6 class="mb-3">Sort News By:</h6>
+                <button class="btn btn-outline-primary sort-btn active" data-sort="date">Latest First</button>
+                <button class="btn btn-outline-primary sort-btn" data-sort="category">Category</button>
+                <button class="btn btn-outline-primary sort-btn" data-sort="popular">Most Popular</button>
+            </div>
+
+            <!-- News Articles -->
+            <div class="row g-4" id="news-container">
+                <!-- News 1 -->
+                <div class="col-lg-4 col-md-6 news-item wow fadeInUp" data-wow-delay="0.3s" data-date="2025-11-15"
+                    data-category="technology" data-popular="95">
+                    <div class="news-card p-4 rounded h-100">
+                        <div class="mb-3">
+                            <span class="news-date">November 2025</span>
+                            <span class="news-category technology">Technology & Gear</span>
+                        </div>
+                        <h4 class="mb-3">Lighter, Smarter: The Next Generation of Satellite Communication Devices</h4>
+                        <p class="mb-3">Batalye ki naye satellite communicators kaise zyada chote, halke aur kam energy
+                            use karte hain, jisse rescue operations aur camp communication mein madad milti hai.</p>
+                        <p>New devices feature emergency SOS, two-way messaging, and weather updates in a package 40%
+                            smaller than previous models.</p>
+                        <div class="text-center mt-4">
+                            <img src="img/update-1.png" alt="Satellite communication device" class="img-fluid rounded"
+                                style="max-height: 150px;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News 2 -->
+                <div class="col-lg-4 col-md-6 news-item wow fadeInUp" data-wow-delay="0.4s" data-date="2025-02-10"
+                    data-category="expedition" data-popular="88">
+                    <div class="news-card p-4 rounded h-100">
+                        <div class="mb-3">
+                            <span class="news-date">February 2025</span>
+                            <span class="news-category expedition">Expedition Update</span>
+                        </div>
+                        <h4 class="mb-3">Successful Winter Ascent of K2: Team Uses New Oxygen System</h4>
+                        <p class="mb-3">Khabar dein ki team ne kis tarah ka naya ya improved oxygen system use kiya, aur
+                            is nayee technique ne safalta hasil karne mein kaise madad ki.</p>
+                        <p>The revolutionary oxygen delivery system reduces weight by 30% while increasing efficiency,
+                            making extreme winter ascents more feasible.</p>
+                        <div class="text-center mt-4">
+                            <img src="img/update-2.jpg" alt="K2 winter ascent" class="img-fluid rounded"
+                                style="max-height: 150px;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News 3 -->
+                <div class="col-lg-4 col-md-6 news-item wow fadeInUp" data-wow-delay="0.5s" data-date="2025-10-05"
+                    data-category="safety" data-popular="92">
+                    <div class="news-card p-4 rounded h-100">
+                        <div class="mb-3">
+                            <span class="news-date">October 2025</span>
+                            <span class="news-category safety">Safety & Environment</span>
+                        </div>
+                        <h4 class="mb-3">New Regulations Proposed for Everest Base Camp Waste Management</h4>
+                        <p class="mb-3">Batalye ki kis tarah ki nayee environment-friendly guidelines (jaise 'Leave No
+                            Trace' ki nayee policies) implement ki jaa rahi hain, taaki pahadi paryavaran ko nuksaan se
+                            bachaya jaa sake.</p>
+                        <p>Mandatory waste deposits and improved sanitation facilities aim to reduce environmental
+                            impact by 60% in the 2026 season.</p>
+                        <div class="text-center mt-4">
+                            <img src="img/update-3.jpg" alt="Everest base camp" class="img-fluid rounded"
+                                style="max-height: 150px;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News 4 -->
+                <div class="col-lg-4 col-md-6 news-item wow fadeInUp" data-wow-delay="0.6s" data-date="2025-09-20"
+                    data-category="technology" data-popular="85">
+                    <div class="news-card p-4 rounded h-100">
+                        <div class="mb-3">
+                            <span class="news-date">September 2025</span>
+                            <span class="news-category technology">Technology & Gear</span>
+                        </div>
+                        <h4 class="mb-3">Smart Clothing: Integrated Heating & GPS in Mountaineering Gear</h4>
+                        <p class="mb-3">New heated jackets with integrated GPS tracking and emergency signaling are
+                            changing winter mountaineering safety standards.</p>
+                        <p>These garments can maintain optimal body temperature in -30°C conditions while providing
+                            real-time location data to rescue teams.</p>
+                        <div class="text-center mt-4">
+                            <img src="img/update-4.jpg" alt="Smart mountaineering gear" class="img-fluid rounded"
+                                style="max-height: 150px;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News 5 -->
+                <div class="col-lg-4 col-md-6 news-item wow fadeInUp" data-wow-delay="0.7s" data-date="2025-08-15"
+                    data-category="expedition" data-popular="90">
+                    <div class="news-card p-4 rounded h-100">
+                        <div class="mb-3">
+                            <span class="news-date">August 2025</span>
+                            <span class="news-category expedition">Expedition Update</span>
+                        </div>
+                        <h4 class="mb-3">Record-Breaking Solo Ascent of Denali in Under 24 Hours</h4>
+                        <p class="mb-3">Professional climber sets new speed record for North America's highest peak
+                            using ultralight alpine style techniques.</p>
+                        <p>The ascent demonstrates how improved fitness training and equipment technology are pushing
+                            the boundaries of what's possible in mountaineering.</p>
+                        <div class="text-center mt-4">
+                            <img src="img/update-5.jpg" alt="Denali ascent" class="img-fluid rounded"
+                                style="max-height: 150px;">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News 6 -->
+                <div class="col-lg-4 col-md-6 news-item wow fadeInUp" data-wow-delay="0.8s" data-date="2025-07-10"
+                    data-category="environment" data-popular="87">
+                    <div class="news-card p-4 rounded h-100">
+                        <div class="mb-3">
+                            <span class="news-date">July 2025</span>
+                            <span class="news-category environment">Environment</span>
+                        </div>
+                        <h4 class="mb-3">Climate Change Impact: Receding Glaciers Alter Classic Climbing Routes</h4>
+                        <p class="mb-3">Scientific study reveals how global warming is changing mountain landscapes and
+                            affecting traditional mountaineering routes worldwide.</p>
+                        <p>Researchers document significant changes in 75% of classic alpine routes, necessitating
+                            updated guidebooks and safety protocols.</p>
+                        <div class="text-center mt-4">
+                            <img src="img/update-6.jpg" alt="Glacier recession" class="img-fluid rounded"
+                                style="max-height: 150px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- News Archive -->
+            <div class="text-center mt-5 wow fadeInUp" data-wow-delay="0.9s">
+                <div class="p-4 bg-light rounded">
+                    <h5><i class="fas fa-archive me-2"></i> News Archive</h5>
+                    <p class="mb-3">Looking for older articles or specific topics? Visit our comprehensive news archive.
+                    </p>
+                    <button class="btn btn-primary" onclick="loadMoreNews()">
+                        <i class="fas fa-plus me-2"></i>Load More News
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="lightbox-modal">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <div class="lightbox-content">
+            <img id="lightbox-image" src="" alt="">
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="container-fluid footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s" style="color:rgb(167, 215, 224) ;">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Our Contact</h5>
+                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Aptech, Karachi, Pakistan</p>
+                        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+92 336 7808 467</p>
+                        <p class="mb-2"><i class="fa fa-envelope me-3"></i>muneebakhan10001@gmail.com</p>
+                        <div class="d-flex pt-3">
+                            <a class="btn btn-square btn-secondary rounded-circle me-2"
+                                href="https://x.com/SufiaNKhaNAwaN5"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square btn-secondary rounded-circle me-2"
+                                href="https://www.facebook.com/profile.php?id=61570182430210"><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square btn-secondary rounded-circle me-2"
+                                href="https://www.youtube.com/channel/UC2EOfVR1eixDmi2J2eu8LIg"><i
+                                    class="fab fa-youtube"></i></a>
+                            <a class="btn btn-square btn-secondary rounded-circle me-2"
+                                href="https://www.linkedin.com/in/m-sufiyan-427832397/"><i
+                                    class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Quick Links</h5>
+                        <a class="btn btn-link" href="about.html">About Us</a>
+                        <a class="btn btn-link" href="guideline.html">Guidelines</a>
+                        <a class="btn btn-link" href="Club_Record.html">Clubs & Records</a>
+                        <a class="btn btn-link" href="media.html">Media</a>
+                        <a class="btn btn-link" href="contact.html">Contact</a>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Newsletter</h5>
+                        <p>Get the latest news and updates from the peaks!</p>
+                        <div class="position-relative w-100">
+                            <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text"
+                                placeholder="Your email">
+                            <button type="button"
+                                class="btn btn-secondary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid text-body copyright py-4" style="color:  rgb(7, 60, 69);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0" style="color:  rgb(7, 60, 69);">
+                        &copy; <a class="fw-semi-bold" href="#">Mountaineering: The Call of the Peaks</a>, All Right
+                        Reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-end" style="color:  rgb(7, 60, 69);">
+                        Designed By <a class="fw-semi-bold" href="#">SM-M Group</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
+                class="bi bi-arrow-up"></i></a>
+
+        <!-- Leaflet JS for Maps -->
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+        <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/counterup/counterup.min.js"></script>
+        <script src="lib/parallax/parallax.min.js"></script>
+        <script src="lib/lightbox/js/lightbox.min.js"></script>
+        <script src="js/main.js"></script>
+
+        <script>
+            // Gallery Images Data
+            const galleryImages = [
+                {
+                    src: "img/gallery1.jpg",
+                    title: "Teamwork & Rope Skills",
+                    description: "Climbers roped together for safety while traversing a glacier in the Alps. Proper rope techniques prevent falls into crevasses."
+                },
+                {
+                    src: "img/gallery2.jpg",
+                    title: "Essential Mountaineering Gear",
+                    description: "Close-up of ice axe, crampons, and climbing harness - the essential tools for technical ice and snow climbing."
+                },
+                {
+                    src: "img/gallery3.jpg",
+                    title: "Glacier Crevasse Hazard",
+                    description: "A deep, blue-hued crevasse on a Himalayan glacier, showing one of the most dangerous natural features in mountaineering."
+                },
+                {
+                    src: "img/gallery4.jpg",
+                    title: "High-Altitude Base Camp",
+                    description: "Expedition tents at Camp 2 on Mount Everest (6400m), showing how climbers live during multi-week ascents."
+                },
+                {
+                    src: "img/gallery5.jpg",
+                    title: "Summit Celebration",
+                    description: "Team celebrating their successful ascent of a 7000m peak in the Karakoram range, Pakistan."
+                },
+                {
+                    src: "img/gallery6.jpg",
+                    title: "Alpine Sunrise",
+                    description: "Beautiful sunrise over the Swiss Alps during an early morning climb, showcasing the breathtaking beauty of mountain environments."
+                }
+            ];
+
+            // Lightbox Functions
+            function openLightbox(index) {
+                const image = galleryImages[index];
+                document.getElementById('lightbox-image').src = image.src;
+                document.getElementById('lightbox-caption').innerHTML = `
+                <h5>${image.title}</h5>
+                <p>${image.description}</p>
+            `;
+                document.getElementById('lightbox-modal').style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                document.getElementById('lightbox-modal').style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+
+            // Close lightbox on ESC key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                }
+            });
+
+            // Close lightbox when clicking outside image
+            document.getElementById('lightbox-modal').addEventListener('click', function (e) {
+                if (e.target === this) {
+                    closeLightbox();
+                }
+            });
+
+            // News Sorting Functionality
+            document.querySelectorAll('.sort-btn').forEach(button => {
+                button.addEventListener('click', function () {
+                    // Remove active class from all buttons
+                    document.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    const sortType = this.getAttribute('data-sort');
+                    sortNews(sortType);
+                });
+            });
+
+            function sortNews(sortType) {
+                const container = document.getElementById('news-container');
+                const newsItems = Array.from(container.getElementsByClassName('news-item'));
+
+                newsItems.sort((a, b) => {
+                    switch (sortType) {
+                        case 'date':
+                            return new Date(b.getAttribute('data-date')) - new Date(a.getAttribute('data-date'));
+                        case 'category':
+                            return a.getAttribute('data-category').localeCompare(b.getAttribute('data-category'));
+                        case 'popular':
+                            return parseInt(b.getAttribute('data-popular')) - parseInt(a.getAttribute('data-popular'));
+                        default:
+                            return 0;
+                    }
+                });
+
+                // Clear container
+                container.innerHTML = '';
+
+                // Append sorted items
+                newsItems.forEach(item => {
+                    container.appendChild(item);
+                });
+            }
+
+            // Load More News (simulated)
+            function loadMoreNews() {
+                const button = event.target;
+                button.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Loading...';
+                button.disabled = true;
+
+                setTimeout(() => {
+                    alert('More news articles would be loaded from server in a real implementation.');
+                    button.innerHTML = '<i class="fas fa-check me-2"></i>No More Articles';
+                    button.disabled = true;
+                }, 1500);
+            }
+
+            // Newsletter Subscription
+            function subscribeNewsletter() {
+                const email = document.getElementById('newsletter-email').value;
+                if (email && email.includes('@')) {
+                    alert(`Thank you for subscribing to our newsletter! Confirmation sent to ${email}`);
+                    document.getElementById('newsletter-email').value = '';
+                } else {
+                    alert('Please enter a valid email address.');
+                }
+            }
+
+            // Initialize when page loads
+            document.addEventListener('DOMContentLoaded', function () {
+                // Initialize WOW.js
+                new WOW().init();
+
+                // Smooth scroll for anchor links
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        if (targetId === '#') return;
+
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+
+                // Initialize news sorting
+                sortNews('date');
+            });
+        </script>
+</body>
+
+</html>
